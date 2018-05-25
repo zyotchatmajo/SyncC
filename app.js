@@ -31,7 +31,7 @@ function guardar(){
 
 //Leer documentos
 var	tabla = document.getElementById('tabla');
-db.collection("users").get().then((querySnapshot) => {
+db.collection("users").onSnapshot((querySnapshot) => {
 	tabla.innerHTML = '';
     querySnapshot.forEach((doc) => {
         console.log(`${doc.id} => ${doc.data().Name}`);

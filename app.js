@@ -19,6 +19,8 @@ function guardar(){
 	})
 	.then(function(docRef) {
 	    console.log("Document written with ID: ", docRef.id);
+	    document.getElementById('nombre').value = '';
+	    document.getElementById('password').value = '';
 	})
 	.catch(function(error) {
 	    console.error("Error adding document: ", error);
@@ -26,3 +28,16 @@ function guardar(){
 })
 
 };
+
+//Leer documentos
+var	tabla = document.getElementById('tabla');
+db.collection("users").get().then((querySnapshot) => {
+	tabla.innerHTML = '';
+    querySnapshot.forEach((doc) => {
+        console.log(`${doc.id} => ${doc.data().Name}`);
+        tabla.innerHTML += `<tr>
+          <td>${doc.data().Name}</td>
+          <td>${doc.data().Password}</td>
+        </tr>`
+    });
+});

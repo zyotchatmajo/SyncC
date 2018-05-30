@@ -26,7 +26,15 @@ function guardar(){
 	    console.error("Error adding document: ", error);
 
 })
-
+function Registrar(){
+	var email = document.getElementById('email').value;
+	var password = document.getElementById('passwordemail').value;
+	firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+  		// Handle Errors here.
+  		var errorCode = error.code;
+  		var errorMessage = error.message;
+  		// ...
+});
 };
 
 //Leer documentos

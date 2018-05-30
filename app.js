@@ -26,7 +26,7 @@ function guardar(){
 	    console.error("Error adding document: ", error);
 
 })
-function Registrar(){
+function registrar(){
 	var email = document.getElementById('email').value;
 	var password = document.getElementById('passwordemail').value;
 	firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {

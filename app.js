@@ -35,7 +35,7 @@ function registrar(){
   		var errorMessage = error.message;
   		// ...
 });
-};
+})
 
 //Leer documentos
 var	tabla = document.getElementById('tabla');

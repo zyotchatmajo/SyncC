@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
 <!doctype html>
 <html lang="en">
   <head>
@@ -16,11 +22,16 @@
   </head>
   <body>
     <div class="container"> 
-       <h1>Agregar usuarios</h1>
+       <h1>Registrar</h1>
        <input type="email" id="email" placeholder="Email" class="form-control my-3">
        <input type="password" id="passwordemail" placeholder="Contraseña" class="form-control my-3">
-       <button class="btn btn-info" id="boton" onclick="guardar()">Registrar</button>
-
+       <button class="btn btn-info" id="boton" onclick="registrar()">Registrar</button>
+       <h1>Inicio de sesion</h1>
+       <input type="email" id="emaili" placeholder="Email" class="form-control my-3">
+       <input type="password" id="passwordi" placeholder="Contraseña" class="form-control my-3">
+       <button class="btn btn-info" id="boton" onclick="inicio()">Iniciar</button>
+       <button class="btn btn-info" id="boton" onclick="test()">test</button>
+       <button class="btn btn-info" id="boton" onclick="salir()">Salir</button>
        <table class="table">
           <thead>
             <tr>

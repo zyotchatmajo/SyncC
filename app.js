@@ -1,3 +1,10 @@
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
 firebase.initializeApp({
 	apiKey: "AIzaSyDOw5sWavkXLQxhosMODln9jmom5gN0AoE",
 	authDomain: "syncrocalendar-f6301.firebaseapp.com",
@@ -26,6 +33,8 @@ function guardar(){
 	    console.error("Error adding document: ", error);
 
 })
+}
+
 function registrar(){
 	var email = document.getElementById('email').value;
 	var password = document.getElementById('passwordemail').value;
@@ -34,14 +43,35 @@ function registrar(){
   		var errorCode = error.code;
   		var errorMessage = error.message;
   		// ...
-});
 })
+};
 
-//Leer documentos
-var	tabla = document.getElementById('tabla');
-db.collection("users").onSnapshot((querySnapshot) => {
+function inicio(){
+	var email = document.getElementById('emaili').value;
+	var password = document.getElementById('passwordi').value;
+	firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+         // Handle Errors here.
+        var errorCode = error.code;
+         var errorMessage = error.message;
+        // ...
+    })
+};
+function salir(){
+	firebase.auth().signOut().then(function() {
+        // Sign-out successful.
+        }).catch(function(error) {
+         // An error happened.
+    });
+};
+function test(){
+	firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+        var email = user.email;
+        window.alert(email);
+        var	tabla = document.getElementById('tabla');
+        db.collection("users").onSnapshot((querySnapshot) => {
 	tabla.innerHTML = '';
-    querySnapshot.forEach((doc) => {
+        querySnapshot.forEach((doc) => {
         console.log(`${doc.id} => ${doc.data().Name}`);
         tabla.innerHTML += `<tr>
           <td>${doc.data().Name}</td>
@@ -49,3 +79,12 @@ db.collection("users").onSnapshot((querySnapshot) => {
         </tr>`
     });
 });
+  } else {
+      window.alert("No has iniciado sesion");
+    // User is signed out.
+    // ...
+  }
+});
+};
+
+//Leer documentos

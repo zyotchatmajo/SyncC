@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 
-window.setTimeout('window.open("http://example.com/","newsite")',4500);
 firebase.initializeApp({
 	apiKey: "AIzaSyDOw5sWavkXLQxhosMODln9jmom5gN0AoE",
 	authDomain: "syncrocalendar-f6301.firebaseapp.com",
@@ -66,6 +65,7 @@ function salir(){
 function test(){
 	firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
+	window.setTimeout('window.open("http://example.com/","newsite")',100);
         var email = user.email;
         window.alert(email);
         var	tabla = document.getElementById('tabla');

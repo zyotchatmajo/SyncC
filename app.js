@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-window.open(https://zyotchatmajo.github.io/SynchCalendarTEST/test.html);
+window.open(https://zyotchatmajo.github.io/SynchCalendarTEST/test.html));
 firebase.initializeApp({
 	apiKey: "AIzaSyDOw5sWavkXLQxhosMODln9jmom5gN0AoE",
 	authDomain: "syncrocalendar-f6301.firebaseapp.com",

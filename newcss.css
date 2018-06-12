@@ -8,6 +8,13 @@ and open the template in the editor.
     Author     : Hope
 */
 
+centrado {
+    max-width: 1000px;
+    margin: auto;
+    left: 1%;
+    right: 1%;
+    position: absolute;
+}
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */

@@ -12,6 +12,15 @@ firebase.initializeApp({
 
 });
 
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    location.href ="/main.html";
+  } else {
+    // User is signed out.
+    // ...
+  }
+});
+
 function iniciar(){
 	var email = document.getElementById('CorreoI').value;
 	var password = document.getElementById('PasswordI').value;

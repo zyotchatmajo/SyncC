@@ -70,6 +70,7 @@ centrado {
     from {transform: scale(0)} 
     to {transform: scale(1)}
 }
+
 body {
     background-image: url("bg5.png");
     background-repeat: repeat-x-y;

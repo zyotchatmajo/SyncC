@@ -14,7 +14,7 @@ firebase.initializeApp({
 
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
-    location.href ="/main.html";
+    location.href ="SynchCalendarTEST/main.html";
   } else {
     // User is signed out.
     // ...

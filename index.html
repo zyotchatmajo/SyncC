@@ -4,56 +4,74 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="newcss.css">
+        <title>Sync login proto</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase-firestore.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    </head>
+    <body>
+        <!-- Button to open the modal login form -->
+<button onclick="document.getElementById('id01').style.display='block'">Login</button>
+<button onclick="document.getElementById('id02').style.display='block'">Registrar</button>
+<!-- The Modal -->
+<!-- Inicio de sesion -->
+<div id="id01" class="modal">
 
-    <!-- Bootstrap CSS TEST-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-
-    <title>SynchCalendar Alpha</title>
-
-    <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase-firestore.js"></script>
-
-  </head>
-  <body>
-    <a href = "test.html">
-      <a href="test.html">HTML Images</a>
-    <div class="container"> 
-       <h1>Registrar</h1>
-       <input type="email" id="email" placeholder="Email" class="form-control my-3">
-       <input type="password" id="passwordemail" placeholder="Contraseña" class="form-control my-3">
-       <button class="btn btn-info" id="boton" onclick="registrar()">Registrar</button>
-       <h1>Inicio de sesion</h1>
-       <input type="email" id="emaili" placeholder="Email" class="form-control my-3">
-       <input type="password" id="passwordi" placeholder="Contraseña" class="form-control my-3">
-       <button class="btn btn-info" id="boton" onclick="inicio()">Iniciar</button>
-       <button class="btn btn-info" id="boton" onclick="test()">test</button>
-       <button class="btn btn-info" id="boton" onclick="salir()">Salir</button>
-       <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">nombre</th>
-              <th scope="col">password</th>
-            </tr>
-          </thead>
-          <tbody id="tabla">
-          </tbody>
-        </table>
-
-        
+  <!-- Modal Content -->
+  <div class="modal-content animate">
+    <div class="imgcontainer">
+      <img src="Login.png" alt="Avatar" class="avatar">
     </div>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <t class="container">
+      <label for="uname" style="color:white;"><b>Correo</b></label>
+      <input type="email" id="CorreoI" placeholder="Introduce tu Correo" name="uname" required>
+
+      <label for="psw" style="color:white;"><b>Contraseña</b></label>
+      <input type="password" id="PasswordI" placeholder="Introduce tu Contraseña" name="psw" required>
+
+      <button class="btn btn-info" id="boton" onclick="iniciar()">Iniciar</button>
+    </t>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cerrar</button>
+    </div>
+  </div>
+</div>
+<!-- Registro -->
+<div id="id02" class="modal">
+ 
+
+  <!-- Modal Content -->
+  <div class="modal-content animate">
+    <div class="imgcontainer">
+      <img src="Registrar.png" alt="Avatar" class="avatar">
+    </div>
+
+    <t class="container">
+      <label for="uname" style="color:white;"><b>Correo</b></label>
+      <input type="email" id="CorreoR" placeholder="Introduce tu Correo" name="uname" required>
+
+      <label for="psw" style="color:white;"><b>Contraseña</b></label>
+      <input type="password" id="PasswordR" placeholder="Introduce tu contraseña" name="psw" required>
+
+      <button class="btn btn-info" id="boton" onclick="registrar()">Registrar</button>
+    </t>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cerrar</button>
+    </div>
+  </div>
+</div>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-    <script src="app.js"></script>
-    <script src="test.css"></script>
-  </body>
+    <script src="index.js"></script>
+    <script src="newcss.css"></script>
+    </body>
 </html>

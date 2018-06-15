@@ -7,25 +7,12 @@ and open the template in the editor.
 <html>
     <head>
         <title>Principal</title>
+        <link rel="stylesheet" type="text/css" href="maincss.css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
         <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase-firestore.js"></script>
-        <style>
-table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-th, td {
-    padding: 15px;
-}
-button{
-    opacity: 1;
-    height: inherit;
-    
-}
-        </style>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     </head>
     <body>
@@ -94,6 +81,31 @@ button{
     <td></td>
   </tr>
 </table>
+        <button onclick="document.getElementById('id01').style.display='block'"><img src ="Crear.png"></img></button>
+
+<div id="id01" class="modal">
+
+  <!-- Modal Content -->
+  <div class="modal-content animate">
+    <div class="imgcontainer">
+      <img src="Crear.png" alt="Avatar" class="avatar">
+    </div>
+
+    <t class="container">
+      <label for="uname" style="color:white;"><b>Nombre del Calendario</b></label>
+      <input type="email" id="NombreC" placeholder="Nombre del Calendario" name="uname" required>
+
+      <label for="psw" style="color:white;"><b>Contraseña del Calendario</b></label>
+      <input type="password" id="PasswordC" placeholder="Contraseña para ingresar" name="psw" required>
+
+      <button class="btn btn-info" id="boton" onclick="RegistrarC()">Crear calendario</button>
+    </t>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cerrar</button>
+    </div>
+  </div>
+</div>
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

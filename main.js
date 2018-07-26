@@ -16,6 +16,7 @@ firebase.auth().onAuthStateChanged(function(user) {
       location.href ="index.html";
   }
 });
+
 $(document).ready(function(){
     $('#UIDC').keypress(function(e){
       if(e.keyCode==13)
@@ -105,6 +106,9 @@ function eliminar(){
     });  
 };
 function xd(num){
+    firebase.auth().onAuthStateChanged(function(user) {
+     console.log(user);
+});
     var docMaterias = db.collection('data'+localc).doc(''+num);
     var getDoc = docMaterias.get()
             .then(doc => {
@@ -160,6 +164,7 @@ function IniciarC(){
                         document.getElementById("Botoncerrar").click();
                         document.getElementById("titulo").innerHTML = doc.data().Nombre;
                         var text1 = document.getElementById("tabla");
+                        botonactu.style.display = "block";
                         tabla.style.display = "block";
                         update();
                     } else {

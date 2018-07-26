@@ -47,7 +47,6 @@ function iniciar(){
 function registrar(){
 	var email = document.getElementById('CorreoR').value;
 	var password = document.getElementById('PasswordR').value;
-        console.log(email);
 	firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
          // Handle Errors here.
         var errorCode = error.code;

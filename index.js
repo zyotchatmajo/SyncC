@@ -21,6 +21,12 @@ firebase.auth().onAuthStateChanged(function(user) {
   }
 });
 
+$(document).ready(function(){
+    $('#PasswordI').keypress(function(e){
+      if(e.keyCode==13)
+      $('#boton').click();
+    });
+});
 function iniciar(){
 	var email = document.getElementById('CorreoI').value;
 	var password = document.getElementById('PasswordI').value;

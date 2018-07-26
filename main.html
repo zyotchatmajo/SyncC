@@ -10,13 +10,17 @@ and open the template in the editor.
         <link rel="stylesheet" type="text/css" href="maincss.css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
         <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
         <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase-firestore.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     </head>
     <body>
-<table style="width:100%">
+    <titulo><p><b id="titulo"></b></p></titulo>
+        <div id="loader"></div>
+        <button class="btn btn-info" id="boton" onclick="update()">Actualizar manual</button>
+        <salir><img src ="Salir.png" onclick="salir()"></img></salir>
+        <div id="tabla" style="display:none">
+<table style="width:100%" >
   <tr>
     <th>Horario</th>
     <th>Lunes</th> 
@@ -27,65 +31,176 @@ and open the template in the editor.
     <th>Sabado</th>
   </tr>
   <tr>
-      <td><button onclick="xd()">test</button></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+      <td>07:00 - 08:00</td>
+    <td onclick="xd(0)" id="0" ></td>
+    <td onclick="xd(1)" id="1" ></td>
+    <td onclick="xd(2)" id="2" ></td>
+    <td onclick="xd(3)" id="3" ></td>
+    <td onclick="xd(4)" id="4" ></td>
+    <td onclick="xd(5)" id="5" ></td>
   </tr>
   <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td>08:00 - 09:00</td>
+    <td onclick="xd(6)" id="6" ></td>
+    <td onclick="xd(7)" id="7" ></td>
+    <td onclick="xd(8)" id="8" ></td>
+    <td onclick="xd(9)" id="9" ></td>
+    <td onclick="xd(10)" id="10" ></td>
+    <td onclick="xd(11)" id="11" ></td>
   </tr>
   <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td>09:00 - 10:00</td>
+    <td onclick="xd(12)" id="12" ></td>
+    <td onclick="xd(13)" id="13" ></td>
+    <td onclick="xd(14)" id="14" ></td>
+    <td onclick="xd(15)" id="15" ></td>
+    <td onclick="xd(16)" id="16" ></td>
+    <td onclick="xd(17)" id="17" ></td>
   </tr>
   <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td>10:00 - 11:00</td>
+    <td onclick="xd(18)" id="18" ></td>
+    <td onclick="xd(19)" id="19" ></td>
+    <td onclick="xd(20)" id="20" ></td>
+    <td onclick="xd(21)" id="21" ></td>
+    <td onclick="xd(22)" id="22" ></td>
+    <td onclick="xd(23)" id="23" ></td>
   </tr>
   <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td>11:00 - 12:00</td>
+    <td onclick="xd(24)" id="24" ></td>
+    <td onclick="xd(25)" id="25" ></td>
+    <td onclick="xd(26)" id="26" ></td>
+    <td onclick="xd(27)" id="27" ></td>
+    <td onclick="xd(28)" id="28" ></td>
+    <td onclick="xd(29)" id="29" ></td>
   </tr>
   <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td>12:00 - 13:00</td>
+    <td onclick="xd(30)" id="30" ></td>
+    <td onclick="xd(31)" id="31" ></td>
+    <td onclick="xd(32)" id="32" ></td>
+    <td onclick="xd(33)" id="33" ></td>
+    <td onclick="xd(34)" id="34" ></td>
+    <td onclick="xd(35)" id="35" ></td>
+  </tr>
+  <tr>
+    <td>13:00 - 14:00</td>
+    <td onclick="xd(36)" id="36" ></td>
+    <td onclick="xd(37)" id="37" ></td>
+    <td onclick="xd(38)" id="38" ></td>
+    <td onclick="xd(39)" id="39" ></td>
+    <td onclick="xd(40)" id="40" ></td>
+    <td onclick="xd(41)" id="41" ></td>
   </tr>
 </table>
-        <button onclick="document.getElementById('id01').style.display='block'"><img src ="Crear.png"></img></button>
+            </div>
+       <img src ="Crear.png" onclick="document.getElementById('id01').style.display='block'"></img>
+        <img src ="Revisar.png" onclick="document.getElementById('id02').style.display='block'"></img>
+        
+         <div id="id05" class="modal">
 
+  <!-- Iniciar -->
+  <div class="modal-content animate">
+    <div class="imgcontainer">
+      <img src="Crear.png" alt="Avatar" class="avatar">
+    </div>
+
+    <t2 class="container">
+      <label for="uname" style="color:white;"><b>El nombre del calendario es</b></label><br>
+      <label for="uname" style="color:white;" id="CalendarioName"><b></b></label><br>
+
+      <label for="psw" style="color:white;"><b>La contraseña es</b></label><br>
+      <label for="uname" style="color:white;" id="CalendarioPass"><b></b></label><br>
+      
+      <label for="psw" style="color:white;"><b>Tu ID Unica es</b></label><br>
+      <label for="uname" style="color:white;" id="CalendarioUID"><b></b></label><br>
+      
+      <label for="psw" style="color:white;"><b>Comparte estos datos con tu grupo para revisar el calendario !</b></label><br>
+  
+    </t2>
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id05').style.display='none'" class="confirmar">Ok !</button>
+
+    </div>
+  </div>
+</div>
+        
+        <div id="id04" class="modal">
+
+  <!-- Iniciar -->
+  <div class="modal-content animate">
+    <div class="imgcontainer">
+      <img src="Tarea.png" alt="Avatar" class="avatar">
+    </div>
+
+    <t2 class="container">
+      <label for="uname" style="color:white;"><b>Titulo</b></label><br>
+      <label for="uname" style="color:white;" id="TareaTit"><b></b></label><br>
+
+      <label for="psw" style="color:white;"><b>Descripcion</b></label><br>
+      <label for="uname" style="color:white;" id="TareaDes"><b></b></label><br>
+      
+      <label for="psw" style="color:white;"><b>Agregado el dia</b></label><br>
+      <label for="uname" style="color:white;" id="TareaAgregado"><b></b></label><br>
+      
+      <label for="psw" style="color:white;"><b>Se entrega el dia</b></label><br>
+      <label for="uname" style="color:white;" id="TareaEntrega"><b></b></label><br>
+  
+    </t2>
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id04').style.display='none'" class="cancelbtn">Cerrar</button>
+      <button type="button" onclick="editar()" class="cancelbtn">Editar</button>
+      <button type="button" onclick="eliminar()" class="cancelbtn">Borrar</button>
+    </div>
+  </div>
+</div>
+        
+        <div id="id03" class="modal">
+
+  <!-- Tareas -->
+  <div class="modal-content animate">
+    <div class="imgcontainer">
+      <img src="AgregarTarea.png" alt="Avatar" class="avatar">
+    </div>
+
+    <t class="container">
+        <label for="uname" style="color:white;"><b>Titulo</b></label>
+      <input type="text" id="Titulo" placeholder="Titulo de la tarea" name="uname" required>
+
+      <label for="psw" style="color:white;"><b>Descripcion</b></label>
+      <input type="text" id="Descripcion" placeholder="Descripcion de la tarea" name="uname" required>
+      
+      <label for="psw" style="color:white;"><b>Fecha de entrega</b></label>
+      <input type="text" id="Dia" placeholder="Introduce el dia Ejemplo: 25" name="uname" required>
+      <select id="Mes">
+          <option value="1">Enero</option>
+          <option value="2">Febrero</option>
+          <option value="3">Marzo</option>
+          <option value="4">Abril</option>
+          <option value="5">Mayo</option>
+          <option value="6">Junio</option>
+          <option value="7">Julio</option>
+          <option value="8">Agosto</option>
+          <option value="9">Septiembre</option>
+          <option value="10">Octubre</option>
+          <option value="11">Noviembre</option>
+          <option value="12">Diciembre</option>
+      </select>
+      <br>
+      <br>
+      <button class="btn btn-info" id="boton" onclick="EnviarT()">Enviar Tarea</button>
+    </t>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id03').style.display='none'" class="cancelbtn">Cerrar</button>
+    </div>
+  </div>
+</div>
+        
 <div id="id01" class="modal">
 
-  <!-- Modal Content -->
+  <!-- Registrar -->
   <div class="modal-content animate">
     <div class="imgcontainer">
       <img src="Crear.png" alt="Avatar" class="avatar">
@@ -93,10 +208,10 @@ and open the template in the editor.
 
     <t class="container">
       <label for="uname" style="color:white;"><b>Nombre del Calendario</b></label>
-      <input type="email" id="NombreC" placeholder="Nombre del Calendario" name="uname" required>
+      <input type="text" id="NombreCR" placeholder="Nombre del Calendario" name="uname" required>
 
       <label for="psw" style="color:white;"><b>Contraseña del Calendario</b></label>
-      <input type="password" id="PasswordC" placeholder="Contraseña para ingresar" name="psw" required>
+      <input type="password" id="PasswordCR" placeholder="Contraseña para ingresar" name="psw" required>
 
       <button class="btn btn-info" id="boton" onclick="RegistrarC()">Crear calendario</button>
     </t>
@@ -107,6 +222,33 @@ and open the template in the editor.
   </div>
 </div>
 
+        <div id="id02" class="modal">
+
+  <!-- Iniciar -->
+  <div class="modal-content animate">
+    <div class="imgcontainer">
+      <img src="Revisar.png" alt="Avatar" class="avatar">
+    </div>
+
+    <t class="container">
+      <label for="uname" style="color:white;"><b>Nombre del Calendario</b></label>
+      <input type="text" id="NombreC" placeholder="Nombre del Calendario" name="uname" required>
+
+      <label for="psw" style="color:white;"><b>Contraseña del Calendario</b></label>
+      <input type="password" id="PasswordC" placeholder="Contraseña para ingresar" name="psw" required>
+      
+      <label for="psw" style="color:white;"><b>UID</b></label>
+      <input type="text" id="UIDC" placeholder="UID del calendario" name="UIDC" required>
+      <button class="btn btn-info" id="BotonIniciar" onclick="IniciarC()">Revisar calendario</button>
+    </t>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" id="Botoncerrar" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+        
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>

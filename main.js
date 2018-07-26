@@ -23,6 +23,23 @@ $(document).ready(function(){
       $('#BotonIniciar').click();
     });
 });
+function editarNombre(){
+    var docMaterias = db.collection('data'+localc).doc(''+tarea);
+    var getDoc = docMaterias.get()
+            .then(doc => {
+                        var nmateria = prompt("Introduce el nuevo nombre:", "");
+                        var materia = {Nombre: ""+nmateria};
+                        var arraym = [];
+                        arraym[tarea] = materia;                        
+                        //var setDoc = db.collection('CalInf').doc('' + localc).update(arraym[num]);
+                        var setDoc = db.collection('data'+localc).doc('' + tarea).update(arraym[tarea]);
+                        update();
+                        document.getElementById('id03').style.display='none';
+    })
+    .catch(err => {
+      console.log('Error getting document', err);
+    });  
+};
 
 async function update(){
     var test;

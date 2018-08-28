@@ -24,7 +24,7 @@ $(document).ready(function(){
     });
 });
 
-function Download() {
+async function Download() {
         var test = [1,1,1,1,1,1,1,1];
         var test2 = [0,0,0,0,0,0,0,0];
         var test3 = "";
@@ -40,7 +40,7 @@ function Download() {
                 test3 = test3 + toLetters(test[k]);
             }
         }
-        var url = 'https://s3-ap-northeast-1.amazonaws.com/tkr-stg-channel-or-jp/assets/stg01_'+test3+'2/Android/texture/faceicon';
+        await var url = 'https://s3-ap-northeast-1.amazonaws.com/tkr-stg-channel-or-jp/assets/stg01_'+test3+'2/Android/texture/faceicon';
         document.getElementById('my_iframe').src = url;
         console.log(test3);
         test3 = "";

@@ -25,10 +25,10 @@ $(document).ready(function(){
 });
 
 async function Download() {
-        var test = [1,1,1,1,1,1,1,1];
+        var test = [4, 12, 16, 2, 1, 1, 1, 1];
         var test2 = [0,0,0,0,0,0,0,0];
         var test3 = "";
-        var testf = [26,26,26,26,26,26,26,26];
+        var testf = [26,26,26,1,1,1,1,1];
         var test2f = [1,1,1,1,1,1,1,1];
         var test4 = false;
     for (var i = 0; test4 === false; i++) {
@@ -40,8 +40,7 @@ async function Download() {
                 test3 = test3 + toLetters(test[k]);
             }
         }
-        var url = await 'https://s3-ap-northeast-1.amazonaws.com/tkr-stg-channel-or-jp/assets/stg01_'+test3+'2/Android/texture/faceicon';
-        document.getElementById('my_iframe').src = url;
+        let url = await link(test3);
         console.log(test3);
         test3 = "";
         test[0] = test[0] + 1;
@@ -59,13 +58,18 @@ async function Download() {
                 }
             }
         }
-        if(test === testf && test2 === test2f){
+        if(i === 100){
             test4 = true;
         }
     }
     console.log("Fin");
+    console.log(test);
 };
 
+async function link(test3){
+        document.getElementById('my_iframe').src += `https://s3-ap-northeast-1.amazonaws.com/tkr-stg-channel-or-jp/assets/stg01_'+test3+'2/Android/texture/faceicon`;
+        //document.getElementById('my_iframe').src = await 'https://s3-ap-northeast-1.amazonaws.com/tkr-stg-channel-or-jp/assets/stg01_'+test3+'2/Android/texture/faceicon';
+}
 function toLettersm(num) {
     "use strict";
     var mod = num % 26,

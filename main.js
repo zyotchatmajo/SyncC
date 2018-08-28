@@ -40,8 +40,8 @@ async function Download() {
                 test3 = test3 + toLetters(test[k]);
             }
         }
-        await var url = 'https://s3-ap-northeast-1.amazonaws.com/tkr-stg-channel-or-jp/assets/stg01_'+test3+'2/Android/texture/faceicon';
-        document.getElementById('my_iframe').src = url;
+        var url = 'https://s3-ap-northeast-1.amazonaws.com/tkr-stg-channel-or-jp/assets/stg01_'+test3+'2/Android/texture/faceicon';
+        await document.getElementById('my_iframe').src = url;
         console.log(test3);
         test3 = "";
         test[0] = test[0] + 1;

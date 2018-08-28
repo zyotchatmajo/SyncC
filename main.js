@@ -48,7 +48,9 @@ function Download() {
         for (var k = 0; k < 9; k++) {
             if(test[k] === 27){
                 test[k] = 1;
-                test[k+1] = test[k+1] + 1;
+		    if(k !== 8){
+			    test[k+1] = test[k+1] + 1;
+		    }
                 if(test2[k] !== 1){
                     test2[k] = 1;
                 }

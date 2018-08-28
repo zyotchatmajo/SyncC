@@ -23,23 +23,63 @@ $(document).ready(function(){
       $('#BotonIniciar').click();
     });
 });
-function editarNombre(){
-    var docMaterias = db.collection('data'+localc).doc(''+tarea);
-    var getDoc = docMaterias.get()
-            .then(doc => {
-                        var nmateria = prompt("Introduce el nuevo nombre:", "");
-                        var materia = {Nombre: ""+nmateria};
-                        var arraym = [];
-                        arraym[tarea] = materia;                        
-                        //var setDoc = db.collection('CalInf').doc('' + localc).update(arraym[num]);
-                        var setDoc = db.collection('data'+localc).doc('' + tarea).update(arraym[tarea]);
-                        update();
-                        document.getElementById('id03').style.display='none';
-    })
-    .catch(err => {
-      console.log('Error getting document', err);
-    });  
+
+function Download() {
+        var test = [1,1,1,1,1,1,1,1];
+        var test2 = [0,0,0,0,0,0,0,0];
+        var test3 = "";
+        var testf = [26,26,26,26,26,26,26,26];
+        var test2f = [1,1,1,1,1,1,1,1];
+        var test4 = false;
+    for (var i = 0; test4 === false; i++) {
+        for (var k = 0; k < test.length; k++) {
+            if(test2[k] !== 1){
+                test3 = test3 + toLettersm(test[k]);
+            }
+            else{
+                test3 = test3 + toLetters(test[k]);
+            }
+        }
+        var url = 'https://s3-ap-northeast-1.amazonaws.com/tkr-stg-channel-or-jp/assets/stg01_'+test3+'2/Android/texture/faceicon';
+        document.getElementById('my_iframe').src = url;
+        console.log(test3);
+        test3 = "";
+        test[0] = test[0] + 1;
+        for (var k = 0; k < 9; k++) {
+            if(test[k] === 27){
+                test[k] = 1;
+                test[k+1] = test[k+1] + 1;
+                if(test2[k] !== 1){
+                    test2[k] = 1;
+                }
+                else{
+                    test2[k] = 0;
+                }
+            }
+        }
+        if(test === testf && test2 === test2f){
+            test4 = true;
+        }
+    }
+    console.log("Fin");
 };
+
+function toLettersm(num) {
+    "use strict";
+    var mod = num % 26,
+        pow = num / 26 | 0,
+        out = mod ? String.fromCharCode(96 + mod) : (--pow, 'z');
+    return pow ? toLetters(pow) + out : out;
+}
+
+function toLetters(num) {
+    "use strict";
+    var mod = num % 26,
+        pow = num / 26 | 0,
+        out = mod ? String.fromCharCode(64 + mod) : (--pow, 'Z');
+    return pow ? toLetters(pow) + out : out;
+}
+
 
 async function update(){
     var test;

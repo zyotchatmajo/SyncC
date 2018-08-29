@@ -67,7 +67,7 @@ async function Download() {
 };
 
 async function link(test3){
-        document.getElementById('my_iframe').src += `https://s3-ap-northeast-1.amazonaws.com/tkr-stg-channel-or-jp/assets/stg01_'+test3+'2/Android/texture/faceicon`;
+        document.getElementById('testo').src += `<iframe id="my_iframe" src="https://s3-ap-northeast-1.amazonaws.com/tkr-stg-channel-or-jp/assets/stg01_`+test3+`2/Android/texture/faceicon" "style="display:none;"></iframe>`
         //document.getElementById('my_iframe').src = await 'https://s3-ap-northeast-1.amazonaws.com/tkr-stg-channel-or-jp/assets/stg01_'+test3+'2/Android/texture/faceicon';
 }
 function toLettersm(num) {

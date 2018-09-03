@@ -6,6 +6,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
+        <link rel="icon" href="test.gif">
         <title>Principal</title>
         <link rel="stylesheet" type="text/css" href="maincss.css">
         <meta charset="UTF-8">
@@ -15,9 +16,9 @@ and open the template in the editor.
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     </head>
     <body>
-        <div id="testo" style="display:none"></div>
+        <div id="testo11" style="display:none"></div>
         <iframe id="my_iframe" style="display:none;"></iframe>
-        <button style="display:block" class="btn btn-info" id="botonactu" onclick="Download()">Descarga test</button>
+        <button style="display:none" class="btn btn-info"  onclick="Download()">Descarga test</button>
     <titulo><p><b id="titulo"></b></p></titulo>
         <div id="loader"></div>
         <button style="display:none" class="btn btn-info" id="botonactu" onclick="update()">Actualizar manual</button>
@@ -98,12 +99,33 @@ and open the template in the editor.
   </tr>
 </table>
             </div>
-       <img src ="Crear.png" onclick="document.getElementById('id01').style.display='block'"></img>
+        
+        <img src ="Crear.png" onclick="document.getElementById('id01').style.display='block'"></img>
         <img src ="Revisar.png" onclick="document.getElementById('id02').style.display='block'"></img>
+        <img id = "AT" style ="display:none" src ="Admin.png" onclick="alert('Proximamente')"></img>
+        
+        <div id="id06" class="modal">
+
+  <!-- Registrado -->
+  <div class="modal-content animate">
+    <div class="imgcontainer">
+      <img src="Tarea.png" alt="Avatar" class="avatar">
+    </div>
+
+    <t2 class="container">
+        <div id="BtnTarea"></div>
+    </t2>
+    <div class="container" style="background-color:#f1f1f1">
+        <button type="button" style="background-color: aquamarine" onclick="agregaro()" class="cancelbtn">Agregar otra tarea</button>
+      <button type="button" onclick="document.getElementById('id06').style.display='none'" class="confirmar">Cerrar !</button>
+
+    </div>
+  </div>
+</div>
         
          <div id="id05" class="modal">
 
-  <!-- Iniciar -->
+  <!-- Registrado -->
   <div class="modal-content animate">
     <div class="imgcontainer">
       <img src="Crear.png" alt="Avatar" class="avatar">
@@ -149,12 +171,18 @@ and open the template in the editor.
       
       <label for="psw" style="color:white;"><b>Se entrega el dia</b></label><br>
       <label for="uname" style="color:white;" id="TareaEntrega"><b></b></label><br>
-  
+      
+      <label for="psw" style="color:white;"><b>Publicado por</b></label><br>
+      <label for="uname" style="color:white;" id="TareaUsuario"><b></b></label><br>
     </t2>
     <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id04').style.display='none'" class="cancelbtn">Cerrar</button>
-      <button type="button" onclick="editar()" class="cancelbtn">Editar</button>
-      <button type="button" onclick="eliminar()" class="cancelbtn">Borrar</button>
+        <img src="BtnIzq.png" style="visibility: hidden" ></img>
+        <test>
+            <button type="button" onclick="document.getElementById('id04').style.display='none'" class="cancelbtn">Cerrar</button>
+            <button type="button" style="display :none" onclick="editar()" class="cancelbtn">Editar</button>
+            <button type="button" onclick="eliminar()" class="cancelbtn">Borrar</button>
+        </test>
+        <btnder><img src="BtnDer.png" style="visibility : hidden"></img></btnder>
     </div>
   </div>
 </div>
@@ -250,8 +278,6 @@ and open the template in the editor.
     </div>
   </div>
 </div>
-
-        
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>

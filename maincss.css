@@ -8,7 +8,7 @@ and open the template in the editor.
     Author     : Hope
 */
 
-titulo {
+titulo{
     color: white;
     font-size: xx-large;
 }
@@ -32,7 +32,12 @@ button{
     
 }
 
-
+test{
+    padding-left: 13%;
+}
+btnder{
+    padding-left: 17%;
+}
 /* Modal info */
 
 .modal {

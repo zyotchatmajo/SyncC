@@ -308,8 +308,25 @@ function IniciarC(){
                 } else {
                     if (NombreC === doc.data().Nombre && PasswordC === doc.data().Password && UIDC === '' + doc.data().UID) {
                         localc = UIDC;
+                        var users = doc.data().Users;
                         //firebase.auth().currentUser.email
-                        if(db.collection('users'+UIDC).doc(''+firebase.auth().currentUser.email) === undefined || db.collection('users'+UIDC).doc(''+firebase.auth().currentUser.email) === 'null'){
+                        var cityRef = db.collection('users'+UIDC).doc(''+firebase.auth().currentUser.email);
+                        var getDoc = cityRef.get()
+                                .then(doc => {
+                                    if (!doc.exists) {
+                                        db.collection('users' + UIDC).doc('' + firebase.auth().currentUser.email).set(
+                                                {Correo: '' + firebase.auth().currentUser.email, Usuario: 'Usuario', Status: 0}
+                                        );
+                                        db.collection('CalInf').doc('' + UIDC).update({Users: (users + 1)});
+                                        $('#BotonIniciar').click();
+                                    } else {
+                                        console.log('Document data:', doc.data());
+                                    }
+                                })
+                                .catch(err => {
+                                    console.log('Error getting document', err);
+                                });
+                        if(db.collection('users'+UIDC).doc(''+firebase.auth().currentUser.email) == undefined || db.collection('users'+UIDC).doc(''+firebase.auth().currentUser.email) == 'null'){
                             db.collection('users'+UIDC).doc(''+firebase.auth().currentUser.email).set(
                                     {Correo : ''+firebase.auth().currentUser.email , Usuario: 'Usuario' , Status : 0}
                                     );

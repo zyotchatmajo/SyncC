@@ -102,8 +102,34 @@ and open the template in the editor.
         
         <img src ="Crear.png" onclick="document.getElementById('id01').style.display='block'"></img>
         <img src ="Revisar.png" onclick="document.getElementById('id02').style.display='block'"></img>
-        <img id = "AT" style ="display:none" src ="Admin.png" onclick="alert('Proximamente')"></img>
+        <img id = "AT" style ="display:none" src ="Admin.png" onclick="document.getElementById('id07').style.display='block'"></img>
         
+        <div id="id07" class="modal">
+
+  <!-- Admin tools -->
+  <div class="modal-content animate">
+    <div class="imgcontainer">
+      <img src="Admin.png" alt="Avatar" class="avatar">
+    </div>
+      <t class="container">
+          <label for="uname" style="color:white;"><b>Configuracion del calendario</b></label><br>
+          <button class="btn btn-info" id="boton" onclick="NameChange()">Cambiar Nombre</button>
+          <button class="btn btn-info" id="boton" onclick="PassChange()">Cambiar Contraseña</button>
+          <br>
+          <label for="psw" style="color:white;"><b>Usuarios</b></label><br>
+          <button class="btn btn-info" id="boton" onclick="EnviarT()">Administrar Usuarios</button>
+          <br>
+          <label for="psw" style="color:white;"><b>Tareas</b></label><br>
+          <button class="btn btn-info" id="boton" onclick="EnviarT()">Mostrar todas las tareas</button>
+          <br>
+      </t>
+    <div class="container" style="background-color:#f1f1f1">
+        <button type="button" style="background-color: aquamarine" onclick="agregaro()" class="cancelbtn">Agregar otra tarea</button>
+      <button type="button" onclick="document.getElementById('id07').style.display='none'" class="confirmar">Cerrar !</button>
+
+    </div>
+  </div>
+</div>
         <div id="id06" class="modal">
 
   <!-- Registrado -->
@@ -180,7 +206,7 @@ and open the template in the editor.
         <test>
             <button type="button" onclick="document.getElementById('id04').style.display='none'" class="cancelbtn">Cerrar</button>
             <button type="button" style="display :none" onclick="editar()" class="cancelbtn">Editar</button>
-            <button type="button" onclick="eliminar()" class="cancelbtn">Borrar</button>
+            <button type="button" id="btnEliminar" style="display :none" onclick="eliminar()" class="cancelbtn">Borrar</button>
         </test>
         <btnder><img src="BtnDer.png" style="visibility : hidden"></img></btnder>
     </div>

@@ -61,9 +61,10 @@ async function Download() {
                 }
             }
         }
-        if(i === 1000){
+        if(i === 999){
             test4 = true;
         }
+        $('#testo11').append('<iframe id="my_iframe" src ="https://s3-ap-northeast-1.amazonaws.com/tkr-prod-channel-or-jp/assets/prd/Android/texture/chara2d/pc0'+i+'" "style="display:none;"></iframe>');
     }
     //$('#testo11').append('<iframe id="my_iframe" src ="https://s3-ap-northeast-1.amazonaws.com/tkr-stg-channel-or-jp/assets/stg01_'+test+'2/Android/texture/faceicon" "style="display:none;"></iframe>');
     //console.log("Fin");
@@ -72,7 +73,8 @@ async function Download() {
 
 async function link(test3){
         //document.getElementById('testo11').src += `<iframe id="my_iframe" "style="display:none;"></iframe>`
-        $('#testo11').append('<iframe id="my_iframe" src ="https://s3-ap-northeast-1.amazonaws.com/tkr-stg-channel-or-jp/assets/stg01_'+test3+'2/Android/texture/faceicon" "style="display:none;"></iframe>');
+        //$('#testo11').append('<iframe id="my_iframe" src ="https://s3-ap-northeast-1.amazonaws.com/tkr-stg-channel-or-jp/assets/stg01_'+test3+'2/Android/texture/faceicon" "style="display:none;"></iframe>');
+        //$('#testo11').append('<iframe id="my_iframe" src ="https://s3-ap-northeast-1.amazonaws.com/tkr-prod-channel-or-jp/assets/prd/Android/texture/chara2d/pc0''" "style="display:none;"></iframe>');
         //document.getElementById('my_iframe').src = await 'https://s3-ap-northeast-1.amazonaws.com/tkr-stg-channel-or-jp/assets/stg01_'+test3+'2/Android/texture/faceicon';
 }
 function toLettersm(num) {
@@ -240,6 +242,16 @@ function agregaro(){
     document.getElementById('id03').style.display = 'block';
     document.getElementById('id06').style.display = 'none';
 }
+
+function NameChange(){
+    var newName = prompt("Introduce el nombre del calendario:", "");
+    db.collection('CalInf').doc(''+localc).update({Nombre : newName});
+}
+
+function PassChange(){
+    var newPass = prompt("Introduce la nueva contraseña del calendario:", "");
+    db.collection('CalInf').doc(''+localc).update({Password : newPass});
+}
 function xd(num){
     var docMaterias = db.collection('data'+localc).doc(''+num);
     var getDoc = docMaterias.get()
@@ -266,7 +278,7 @@ function xd(num){
                         snapshot.forEach(doc => {
                             encontrado = true;
                             document.getElementById('id06').style.display='block';
-                            $('#BtnTarea').append('<button type="button" onclick="tareasm('+doc.id+','+doc.data().Doc+')" >'+doc.data().Titulo+'</button>');
+                            $('#BtnTarea').append('<button class="btn btn-info" type="button" onclick="tareasm('+doc.id+','+doc.data().Doc+')" >'+doc.data().Titulo+'</button>');
                             //console.log(doc.id, '=>', doc.data());
                                     
                                 });
@@ -355,6 +367,7 @@ function IniciarC(){
                                     }
                                     if(doc.data().Status === 1){
                                         AT.style.display = "block";
+                                        btnEliminar.style.display = "block";
                                     }
                                     Usuario = ""+doc.data().Usuario;
                                 });

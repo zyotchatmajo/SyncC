@@ -252,7 +252,61 @@ function PassChange(){
     var newPass = prompt("Introduce la nueva contraseña del calendario:", "");
     db.collection('CalInf').doc(''+localc).update({Password : newPass});
 }
+
+function Historial(){
+    document.getElementById('BtnAgregarT').style.visibility='hidden';
+    document.getElementById('id06').style.display='block';
+    var tareas = db.collection('TareasN'+localc);
+                    $('#BtnTarea').html('');
+                    //console.log(tareas);
+                    var query = tareas.where('Tarea', '==', false).get()
+                    .then(snapshot => {
+                        snapshot.forEach(doc => {
+                            
+                            $('#BtnTarea').append('<button class="btn btn-info" type="button" onclick="tareasm('+doc.id+','+doc.data().Doc+')" >Materia: '+doc.data().Nombre+' Titulo : '+doc.data().Titulo+'</button><br><br>');
+                            //console.log(doc.id, '=>', doc.data());
+                                    
+                                });
+                            })
+                            .catch(err => {
+                                console.log('Error getting documents', err);
+                            });
+}
+
+function Usuarios(){
+    document.getElementById('BtnAgregarT').style.visibility='hidden';
+    var Users = db.collection('users'+localc);
+    document.getElementById('id06').style.display='block';
+    $('#BtnTarea').html('');
+    var color;
+    var allUsers = Users.get()
+            .then(snapshot => {
+                snapshot.forEach(doc => {
+                    if(doc.data().Status === 1){
+                       color = "gold";
+                    }
+                    else if(doc.data().Status === 0){
+                        color = "white";
+                    }
+                    else if(doc.data().Status === -1){
+                        color = "red";
+                    }
+                    $('#BtnTarea').append('<label for="uname" style="color:'+color+';"><b>Usuario : '+doc.data().Usuario+' Correo : '+doc.data().Correo+ '</b></label><br><button class="btn btn-info" type="button" onclick="UserChange(\''+doc.data().Correo+'\')">Cambiar estado</button><br>');
+                    //$('#BtnTarea').append('<button class="btn btn-info" type="button" onclick="tareasm('+doc.id+','+doc.data().Doc+')" >Materia: '+doc.data().Nombre+' Titulo : '+doc.data().Titulo+'</button><br><br>');
+                    console.log(doc.id, '=>', doc.data());
+                });
+            })
+            .catch(err => {
+                console.log('Error getting documents', err);
+            });
+}
+
+function UserChange(user){
+        var nombre = prompt("Introduce el nuevo rol (Admin : 1 | Usuario : 0 | Ban : -1):", "");
+        db.collection('users'+localc).doc(''+user).update({Status : parseInt(nombre)});
+}
 function xd(num){
+    document.getElementById('BtnAgregarT').style.visibility='visible';
     var docMaterias = db.collection('data'+localc).doc(''+num);
     var getDoc = docMaterias.get()
             .then(doc => {
@@ -363,6 +417,7 @@ function IniciarC(){
                                         var text1 = document.getElementById("tabla");
                                         botonactu.style.display = "block";
                                         tabla.style.display = "block";
+                                        HT.style.display = "block";
                                         update();
                                     }
                                     if(doc.data().Status === 1){

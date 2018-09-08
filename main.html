@@ -102,6 +102,7 @@ and open the template in the editor.
         
         <img src ="Crear.png" onclick="document.getElementById('id01').style.display='block'"></img>
         <img src ="Revisar.png" onclick="document.getElementById('id02').style.display='block'"></img>
+        <img id = "HT" style ="display:none" src ="Historial.png" onclick="Historial()"></img>
         <img id = "AT" style ="display:none" src ="Admin.png" onclick="document.getElementById('id07').style.display='block'"></img>
         
         <div id="id07" class="modal">
@@ -117,14 +118,12 @@ and open the template in the editor.
           <button class="btn btn-info" id="boton" onclick="PassChange()">Cambiar Contraseña</button>
           <br>
           <label for="psw" style="color:white;"><b>Usuarios</b></label><br>
-          <button class="btn btn-info" id="boton" onclick="EnviarT()">Administrar Usuarios</button>
+          <button class="btn btn-info" id="boton" onclick="Usuarios()">Administrar Usuarios</button>
           <br>
-          <label for="psw" style="color:white;"><b>Tareas</b></label><br>
-          <button class="btn btn-info" id="boton" onclick="EnviarT()">Mostrar todas las tareas</button>
           <br>
       </t>
     <div class="container" style="background-color:#f1f1f1">
-        <button type="button" style="background-color: aquamarine" onclick="agregaro()" class="cancelbtn">Agregar otra tarea</button>
+        <button  type="button" style="background-color: aquamarine" onclick="agregaro()" class="cancelbtn">Agregar otra tarea</button>
       <button type="button" onclick="document.getElementById('id07').style.display='none'" class="confirmar">Cerrar !</button>
 
     </div>
@@ -142,7 +141,7 @@ and open the template in the editor.
         <div id="BtnTarea"></div>
     </t2>
     <div class="container" style="background-color:#f1f1f1">
-        <button type="button" style="background-color: aquamarine" onclick="agregaro()" class="cancelbtn">Agregar otra tarea</button>
+        <button id="BtnAgregarT" type="button" style="background-color: aquamarine" onclick="agregaro()" class="cancelbtn">Agregar otra tarea</button>
       <button type="button" onclick="document.getElementById('id06').style.display='none'" class="confirmar">Cerrar !</button>
 
     </div>

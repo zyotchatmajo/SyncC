@@ -29,13 +29,13 @@ $(document).ready(function(){
 });
 
 async function Download() {
-        var test = [19,9,6,1,1,1,1,1];
+        var test = [1,19,16,1,1,1,1,1];
         var test2 = [0,0,0,0,0,0,0,0];
         var test3 = "";
         var testf = [26,26,26,1,1,1,1,1];
         var test2f = [1,1,1,1,1,1,1,1];
         var test4 = false;
-    for (var i = 0; test4 === false; i++) {
+    for (var i = 23134268500; test4 === false; i++) {
         for (var k = 0; k < test.length; k++) {
             if(test2[k] !== 1){
                 test3 = test3 + toLettersm(test[k]);
@@ -61,19 +61,41 @@ async function Download() {
                 }
             }
         }
-        if(i === 999){
+        if(i === 23135268554){
             test4 = true;
         }
-        $('#testo11').append('<iframe id="my_iframe" src ="https://s3-ap-northeast-1.amazonaws.com/tkr-prod-channel-or-jp/assets/prd/Android/texture/chara2d/pc0'+i+'" "style="display:none;"></iframe>');
+        //23134229
+        var userid = "userId="+i;
+        var coded = btoa(userid);
+        var url2 = "https://tkr-i18n-dev.channel.or.jp/dev01/tkr/info/view/news/android?p=";
+        //var url2 = "https://s3-ap-northeast-1.amazonaws.com/tkr-judge-channel-or-jp/assets/judge_PXOfjnug"+i+"/Android/texture/faceicon";
+        //UrlExists(url2);
+        /*url2 = "https://tkr-dev.channel.or.jp/dev01/tkr/info/view/news/android?p=";
+        UrlExists(url2+coded);
+        url2 = "https://tkr-chk.channel.or.jp/chk01/tkr/info/view/news/android?p=";*/
+        UrlExists(url2+coded);
+        //$('#testo11').append('<iframe id="my_iframe" src ="https://s3-ap-northeast-1.amazonaws.com/tkr-prod-channel-or-jp/assets/prd/Android/chara/c035'+i+'" "style="display:none;"></iframe>');
+        //$('#testo11').append('<iframe id="my_iframe" src ="https://s3-ap-northeast-1.amazonaws.com/tkr-judge-channel-or-jp/assets/judge_PXOfjnug4/Android/texture/chara2d/pc'+i+'" "style="display:none;"></iframe>');
     }
     //$('#testo11').append('<iframe id="my_iframe" src ="https://s3-ap-northeast-1.amazonaws.com/tkr-stg-channel-or-jp/assets/stg01_'+test+'2/Android/texture/faceicon" "style="display:none;"></iframe>');
     //console.log("Fin");
     console.log(test);
 };
 
+async function UrlExists(url) {
+    var http = await new XMLHttpRequest();
+    http.open('HEAD', url, false);
+    http.send();
+    if (http.status != 404){
+        window.open(url);
+    }
+    else{
+        window.location.reload();
+    }
+}
 async function link(test3){
         //document.getElementById('testo11').src += `<iframe id="my_iframe" "style="display:none;"></iframe>`
-        //$('#testo11').append('<iframe id="my_iframe" src ="https://s3-ap-northeast-1.amazonaws.com/tkr-stg-channel-or-jp/assets/stg01_'+test3+'2/Android/texture/faceicon" "style="display:none;"></iframe>');
+        //ORIGI$('#testo11').append('<iframe id="my_iframe" src ="https://s3-ap-northeast-1.amazonaws.com/tkr-stg-channel-or-jp/assets/stg01_'+test3+'2/Android/texture/faceicon" "style="display:none;"></iframe>');
         //$('#testo11').append('<iframe id="my_iframe" src ="https://s3-ap-northeast-1.amazonaws.com/tkr-prod-channel-or-jp/assets/prd/Android/texture/chara2d/pc0''" "style="display:none;"></iframe>');
         //document.getElementById('my_iframe').src = await 'https://s3-ap-northeast-1.amazonaws.com/tkr-stg-channel-or-jp/assets/stg01_'+test3+'2/Android/texture/faceicon';
 }

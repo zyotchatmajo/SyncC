@@ -29,58 +29,77 @@ $(document).ready(function(){
 });
 
 async function Download() {
-        var test = [1,19,16,1,1,1,1,1];
-        var test2 = [0,0,0,0,0,0,0,0];
-        var test3 = "";
-        var testf = [26,26,26,1,1,1,1,1];
-        var test2f = [1,1,1,1,1,1,1,1];
-        var test4 = false;
-    for (var i = 23134268500; test4 === false; i++) {
+    var test = [23, 3, 1, 2, 5, 8, 11, 7, 12];
+    var test2 = [0, 1, 1, 0, 0, 0, 0, 2, 1];
+    var test3 = "";
+    var testf = [26, 26, 26, 1, 1, 1, 1, 1];
+    var test2f = [1, 1, 1, 1, 1, 1, 1, 1];
+    var test4 = false;
+    var banderin = 0;
+    for (var i = 1; test4 === false; i++) {
         for (var k = 0; k < test.length; k++) {
-            if(test2[k] !== 1){
+            if (test2[k] === 0) {
                 test3 = test3 + toLettersm(test[k]);
-            }
-            else{
+            } else if (test2[k] === 1) {
                 test3 = test3 + toLetters(test[k]);
+            } else if (test2[k] === 2) {
+                test3 = test3 + (test[k] - 1);
             }
         }
-        let url = await link(test3);
+         //console.log(test3);
+        var url2 = "https://s3-ap-northeast-1.amazonaws.com/tkr-dev-channel-or-jp/assets/dev01_" + test3 + "/Android/Android";
+        UrlExists(url2);
+        url2 = "https://s3-ap-northeast-1.amazonaws.com/tkr-dev-channel-or-jp/assets/dev02_" + test3 + "/Android/Android";
+        UrlExists(url2);
+        url2 = "https://s3-ap-northeast-1.amazonaws.com/tkr-stg-channel-or-jp/assets/stg01_" + test3 + "//Android/Android";
+        UrlExists(url2);
+        url2 = "https://s3-ap-northeast-1.amazonaws.com/tkr-stg-channel-or-jp/assets/stg02_" + test3 + "/Android/Android";
+        UrlExists(url2);
+        url2 = "https://s3-ap-northeast-1.amazonaws.com/tkr-chk-channel-or-jp/assets/chk01_" + test3 + "/Android/Android";
+        UrlExists(url2);
+        url2 = "https://s3-ap-northeast-1.amazonaws.com/tkr-chk-channel-or-jp/assets/chk02_" + test3 + "/Android/Android";
+        UrlExists(url2);
         test3 = "";
-        test[0] = test[0] + 1;
-        for (var k = 0; k < 9; k++) {
-            if(test[k] === 27){
+        test[test.length - 1] = test[test.length - 1] + 1;
+        for (var k = 0; k < 10; k++) {
+            if (test[k] === 27 && test2[k] !== 2) {
                 test[k] = 1;
-		    if(k !== 8){
-			    test[k+1] = test[k+1] + 1;
-		    }
-                if(test2[k] !== 1){
-                    test2[k] = 1;
+                if (banderin === 2) {
+                    test[k - 1] = test[k - 1] + 1;
+                    banderin = 0;
                 }
-                else{
+                if (test2[k] === 0) {
+                    test2[k] = 1;
+                } else if (test2[k] === 1) {
+                    test2[k] = 2;
+                } else {
                     test2[k] = 0;
                 }
+                banderin++;
+            } else if (test[k] === 11 && test2[k] === 2) {
+                test[k] = 1;
+                if (banderin === 2) {
+                    test[k - 1] = test[k - 1] + 1;
+                    banderin = 0;
+                }
+                if (test2[k] === 0) {
+                    test2[k] = 1;
+                } else if (test2[k] === 1) {
+                    test2[k] = 2;
+                } else {
+                    test2[k] = 0;
+                }
+                banderin++;
             }
         }
-        if(i === 23135268554){
+        if(i === 9999999){
             test4 = true;
         }
-        //23134229
-        var userid = "userId="+i;
-        var coded = btoa(userid);
-        var url2 = "https://tkr-i18n-dev.channel.or.jp/dev01/tkr/info/view/news/android?p=";
-        //var url2 = "https://s3-ap-northeast-1.amazonaws.com/tkr-judge-channel-or-jp/assets/judge_PXOfjnug"+i+"/Android/texture/faceicon";
-        //UrlExists(url2);
-        /*url2 = "https://tkr-dev.channel.or.jp/dev01/tkr/info/view/news/android?p=";
-        UrlExists(url2+coded);
-        url2 = "https://tkr-chk.channel.or.jp/chk01/tkr/info/view/news/android?p=";*/
-        UrlExists(url2+coded);
-        //$('#testo11').append('<iframe id="my_iframe" src ="https://s3-ap-northeast-1.amazonaws.com/tkr-prod-channel-or-jp/assets/prd/Android/chara/c035'+i+'" "style="display:none;"></iframe>');
-        //$('#testo11').append('<iframe id="my_iframe" src ="https://s3-ap-northeast-1.amazonaws.com/tkr-judge-channel-or-jp/assets/judge_PXOfjnug4/Android/texture/chara2d/pc'+i+'" "style="display:none;"></iframe>');
+       
+        
     }
-    //$('#testo11').append('<iframe id="my_iframe" src ="https://s3-ap-northeast-1.amazonaws.com/tkr-stg-channel-or-jp/assets/stg01_'+test+'2/Android/texture/faceicon" "style="display:none;"></iframe>');
-    //console.log("Fin");
     console.log(test);
-};
+}
 
 async function UrlExists(url) {
     var http = await new XMLHttpRequest();
